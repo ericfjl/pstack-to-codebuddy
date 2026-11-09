@@ -1,0 +1,6 @@
+.DS_Store
+*.swp
+/tmp/
+
+# 本地核验草稿，结论已过时，不随仓库发布
+docs/verification-report.md
