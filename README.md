@@ -2,7 +2,7 @@
 
 把 Lauren Tan 的 pstack 技能栈装进 CodeBuddy。装完你会得到 58 个技能、23 个任务剧本、2 个子代理，以及一层把 Cursor 名称翻译成 CodeBuddy 名称的规则。
 
-不用先懂 pstack 原理。按下面三步做完，就能用 `/poteto-mode` 提任务。
+不用先懂 pstack 原理。选下面任一种方式装完，就能用 `/poteto-mode` 提任务。
 
 想看原理、字段映射和调研过程，读 [docs/technical-notes.md](docs/technical-notes.md)。
 
@@ -16,7 +16,27 @@
 
 ---
 
-## 三步装好
+## 方式一：让 CodeBuddy 自己装（一句 prompt）
+
+不想敲命令时，把下面这段整段复制进 CodeBuddy 对话框。它负责下载、安装和校验，最后告诉你怎么检查。
+
+手机上也能用。先用 CodeBuddy 的远程控制连到电脑上的会话，再粘贴这段。
+
+```text
+把 pstack 安装到当前项目根目录的 .codebuddy/ 目录。
+
+1. 把 https://github.com/ericfjl/pstack-to-codebuddy.git 浅克隆到 /tmp/pstack-to-codebuddy；目录已存在就先更新。
+2. 执行 /tmp/pstack-to-codebuddy/install.sh，参数传当前项目根目录的绝对路径。
+3. 核对脚本输出：58 个技能、23 个剧本、2 条规则、2 个子代理。数量不符就停止并说明原因。
+4. 约束：不改动项目源代码，不修改任何 SKILL.md，不运行 /setup-pstack。
+5. 完成后列出重开会话后 /skills、/agents、/memory 各自应该看到的内容。
+```
+
+脚本会自己从 `cursor/plugins` 拉取上游文件，约 7.5 MB，第一次需要联网。装完重开会话，按下面的检查表核对。
+
+---
+
+## 方式二：在终端里装（三步）
 
 ### 第 1 步：下载本仓库
 
